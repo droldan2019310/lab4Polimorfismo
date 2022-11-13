@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="lab4Polimorfismo.jnlp">
+  <information>
+    <title>lab4Polimorfismo</title>
+    <vendor>Davis</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="lab4Polimorfismo.jar" size="2864" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="lab4polimorfismo.Lab4Polimorfismo"  name="lab4Polimorfismo" />
+  <update check="always"/>
+</jnlp>
