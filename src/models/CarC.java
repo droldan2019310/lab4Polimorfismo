@@ -19,15 +19,16 @@ public class CarC implements ICarC {
     ArrayList<Float> stations = new ArrayList();
     float actualStation;
     int repType;
-    ArrayList<ISong> songsMP3 = new ArrayList();
-    ArrayList<ISong> songsCD = new ArrayList();
-    ArrayList<ISong> songsSPOTIFY = new ArrayList();
+    ArrayList<Song> songsMP3 = new ArrayList();
+    ArrayList<Song> songsCD = new ArrayList();
+    ArrayList<Song> songsSPOTIFY = new ArrayList();
     int currentIndex;
     boolean phoneConnectionStatus;
     ArrayList<String> contacts = new ArrayList();
     int callStatus;
     String weather;
     boolean radioStatus;
+    boolean repStatus;
     String actualNameCall;
 
     public CarC(int volume, boolean frequency, float actualStation, int repType, int currentIndex, boolean phoneConnectionStatus, int callStatus, String weather, boolean radioStatus, String actualNameCall) {
@@ -41,14 +42,52 @@ public class CarC implements ICarC {
         this.weather = weather;
         this.radioStatus = radioStatus;
         this.actualNameCall = actualNameCall;
+        
+       
+    }
+
+    public CarC() {
+        songsMP3.add(new Song("cancion 1 mp3","artista 1","album 1","1:00","genero 1"));
+        songsMP3.add(new Song("cancion 2 mp3","artista 2","album 2","1:00","genero 2"));
+        songsMP3.add(new Song("cancion 3 mp3","artista 3","album 3","1:00","genero 3"));
+        
+        
+        songsCD.add(new Song("cancion 1 CD","artista 1","album 1","1:00","genero 1"));
+        songsCD.add(new Song("cancion 2 CD","artista 2","album 2","1:00","genero 2"));
+        songsCD.add(new Song("cancion 3 CD","artista 3","album 3","1:00","genero 3"));
+        
+        songsSPOTIFY.add(new Song("cancion 1 SPOTIFY","artista 1","album 1","1:00","genero 1"));
+        songsSPOTIFY.add(new Song("cancion 2 SPOTIFY","artista 2","album 2","1:00","genero 2"));
+        songsSPOTIFY.add(new Song("cancion 3 SPOTIFY","artista 3","album 3","1:00","genero 3"));
+        currentIndex= 0;
+        repStatus=true;
+        radioStatus=false;
+        
+        stations.add(Float.parseFloat("92.4"));
+        stations.add(Float.parseFloat("96.4"));
+        stations.add(Float.parseFloat("102.4"));
+        
+        contacts.add("DAVIS");
+        contacts.add("SILVIA");
+        contacts.add("MICHELLE");
+        
     }
     
     
-
     
+    public boolean getStatusRep() {
+        return repStatus;
+    }
     
-    
-    
+     public boolean switchStatusRep() {
+        this.repStatus = !this.repStatus;
+        return this.repStatus;
+    }
+     
+    public ArrayList<Float> getStations() {
+        return this.stations;
+    }
+   
     
     @Override
     public boolean SwitchRadioONOFF() {
@@ -63,11 +102,11 @@ public class CarC implements ICarC {
 
     @Override
     public int getVolume() {
-        return volume;
+        return this.volume;
     }
 
     @Override
-    public void setVolume(int Volume) {
+    public void setVolume(int volume) {
         this.volume = volume;
     }
 
@@ -114,7 +153,7 @@ public class CarC implements ICarC {
     }
 
     @Override
-    public ArrayList<ISong> getAListOfSongs(int TypeOfAudioReproduction) {
+    public ArrayList<Song> getAListOfSongs(int TypeOfAudioReproduction) {
         if(TypeOfAudioReproduction ==1){
             return songsCD;
         }else if(TypeOfAudioReproduction==2){
@@ -127,19 +166,19 @@ public class CarC implements ICarC {
     @Override
     public void NextSong(int CurrentIndex, int TypeOfAudioReproduction) {
         if(TypeOfAudioReproduction ==1){
-            if(CurrentIndex+1>songsCD.size()){
+            if(CurrentIndex+1>=songsCD.size()){
                 this.currentIndex=0;
             }else{
                 this.currentIndex=this.currentIndex+1;
             }
         }else if(TypeOfAudioReproduction==2){
-            if(CurrentIndex+1>songsSPOTIFY.size()){
+            if(CurrentIndex+1>=songsSPOTIFY.size()){
                 this.currentIndex=0;
             }else{
                 this.currentIndex=this.currentIndex+1;
             }
         }else{
-            if(CurrentIndex+1>songsMP3.size()){
+            if(CurrentIndex+1>=songsMP3.size()){
                 this.currentIndex=0;
             }else{
                 this.currentIndex=this.currentIndex+1;
@@ -152,19 +191,19 @@ public class CarC implements ICarC {
     public void PrevSong(int CurrentIndex, int TypeOfAudioReproduction) {
          if(TypeOfAudioReproduction ==1){
             if(CurrentIndex-1<0){
-                this.currentIndex=songsCD.size();
+                this.currentIndex=songsCD.size()-1;
             }else{
                 this.currentIndex=this.currentIndex-1;
             }
         }else if(TypeOfAudioReproduction==2){
             if(CurrentIndex-1<0){
-                this.currentIndex=songsSPOTIFY.size();
+                this.currentIndex=songsSPOTIFY.size()-1;
             }else{
                 this.currentIndex=this.currentIndex-1;
             }
         }else{
             if(CurrentIndex-1<0){
-                this.currentIndex=songsMP3.size();
+                this.currentIndex=songsMP3.size()-1;
             }else{
                 this.currentIndex=this.currentIndex-1;
             }
@@ -225,7 +264,7 @@ public class CarC implements ICarC {
     @Override
     public String PlaceCallOnHold() {
         this.callStatus=2;
-        return this.actualNameCall;
+        return this.actualNameCall+" EN ESPERA";
         
     }
 
@@ -241,4 +280,11 @@ public class CarC implements ICarC {
         return "TEMPLADO";
     }
     
+    public int getCurrentIndex(){
+        return this.currentIndex;
+    }
+    
+    public void setCurrentIndex(int current){
+         this.currentIndex= current;
+    }
 }

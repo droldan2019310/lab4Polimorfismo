@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="lab4Polimorfismo.jar" size="11920" download="eager" />
+    <jar href="lab4Polimorfismo.jar" size="9159" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="lab4polimorfismo.Lab4Polimorfismo"  name="lab4Polimorfismo" />
   <update check="always"/>

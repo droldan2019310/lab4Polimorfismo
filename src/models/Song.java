@@ -17,6 +17,16 @@ public class Song implements ISong {
     String album;
     String duration;
     String genre;
+
+    public Song(String title, String artist, String album, String duration, String genre) {
+        this.title = title;
+        this.artist = artist;
+        this.album = album;
+        this.duration = duration;
+        this.genre = genre;
+    }
+    
+    
     
     @Override
     public void setTitle(String _title) {

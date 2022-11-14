@@ -2,6 +2,7 @@
 
 package interfaces;
 import java.util.ArrayList;
+import models.Song;
 
 
 /**
@@ -11,7 +12,6 @@ import java.util.ArrayList;
  */
 public interface ICarC {
 	/**
-	 * @param actual_state estado actual de la radio que se recibe
 	 * @return El estado de la radio cambiado
 	 */
 	public boolean SwitchRadioONOFF();
@@ -36,7 +36,6 @@ public interface ICarC {
 	
 	/**
 	 * Metodo para cambiar el tipo de frecuencia de FM a AM
-	 * @param frequency Si este es verdadero significa que es FM, 
 	 * si es falso es AM
 	 * @return el valor cambiado de la frecuencia
 	 */
@@ -63,10 +62,7 @@ public interface ICarC {
 	 */
 	public float getStation();
 	
-	/**
-	 * Metodo que debe guardar la estacion recibida en en el ArrayList
-	 * @param _station
-	 */
+	
 	public void SaveStation(float _station);
 	
 	/**
@@ -87,7 +83,6 @@ public interface ICarC {
 	/**
 	 * Este metodo se encarga de cambiar el valor del tipo de reproduccion
 	 * 1(Reproduccion de CD) 2(Reproduccion de MP3) 3 (Reproduccion de Spotify)
-	 * @return Numero que representa el tipo de reproductor
 	 */
 	public void setAudioRepType(int repType);
 	
@@ -95,10 +90,9 @@ public interface ICarC {
 	 * Metodo que se encarga de obtener una de las listas de canciones pre definidas
 	 * Hay 3 tipos de listas (Lista 1 , lista de canciones en CD), (Lista 2, lista de canciones
 	 * en spotify), (Lista 3, lista de canciones MP3)
-	 * @param TypeOfAudioReproduction Tipo de lista que se desea
 	 * @return Lista de canciones en funcion del tipo de que se solicita
 	 */
-	public ArrayList<ISong> getAListOfSongs(int TypeOfAudioReproduction);
+	public ArrayList<Song> getAListOfSongs(int TypeOfAudioReproduction);
 	
 	/**
 	 * Metodo que se encarga de cambiar el indice actual de la lista de reproduccion. 
